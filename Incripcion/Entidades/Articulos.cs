@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+
+namespace Incripcion.Entidades
+{
+   public  class Articulos
+    {
+        [Key]
+        public int ArticuloID { get; set; }
+        public string Descripcion { get; set; }
+        public decimal Precio { get; set; }
+
+        public Articulos(int articuloID, string descripcion, int precio)
+        {
+            this.ArticuloID = articuloID;
+            this.Descripcion = descripcion;
+            this.Precio = precio;
+        }
+
+        public Articulos()
+        {
+            this.ArticuloID = 0;
+            this.Descripcion = string.Empty;
+            this.Precio = 0;
+        }
+        public Articulos( string descripcion)
+        {
+            
+            this.Descripcion = descripcion;
+         
+        }
+    }
+}
