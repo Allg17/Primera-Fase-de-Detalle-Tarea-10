@@ -15,6 +15,8 @@ namespace Incripcion
        
         Articulos Articulo = new Articulos();
         Cotizaciones Cotisar = new Cotizaciones();
+        int ListaPasada = 0;
+        List<CotizacionesDetalle> detalle = new List<CotizacionesDetalle>();
         public fCotizaciones()
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace Incripcion
         {
             Cotizaciones cotizacion = LlenaClase();
             LimpiarProvider();
+            int paso = 0;
             if (SetErrorProvider(4)==false)
             {
                 MessageBox.Show("Llenar los campos marcados");
@@ -43,8 +46,19 @@ namespace Incripcion
                 }
             }
             else
-            {            
-                if(BLL.CotizacionesBLL.Modificar(LlenaClase())&&BLL.CotizacionesDetalleBLL.Modificar(BLL.CotizacionesDetalleBLL.ModificarArticulos(Cotisar.CotizacionDetalle, Convert.ToInt32(DetallenumericUpDown.Value))))
+            {
+                foreach (var Detalle in Cotisar.CotizacionDetalle)
+                {
+                    if (BLL.CotizacionesBLL.Modificar(LlenaClase()) && BLL.CotizacionesDetalleBLL.Modificar(BLL.CotizacionesDetalleBLL.ModificarArticulos(Cotisar.CotizacionDetalle, Detalle.ID)))
+                    {
+                        paso = 1;
+                    }
+                    else
+                    {
+                        paso = 0;
+                    }
+                }
+                if(paso == 1)
                 {
                     MessageBox.Show("Modificado!!");
                 }
@@ -52,6 +66,7 @@ namespace Incripcion
                 {
                     MessageBox.Show("No se pudo Modificar!!");
                 }
+
 
             }
 
@@ -287,6 +302,22 @@ namespace Incripcion
                     Cotisar.Monto = BLL.CotizacionesBLL.CotisarMonto(Cotisar.CotizacionDetalle);
                 }
                 MontotextBox.Text = Cotisar.Monto.ToString();
+            }
+            // por si se quiere agregar otro articulo 
+            if(CotizaciontextBox.Text != string.Empty)
+            {
+                int id;
+                int.TryParse(CotizaciontextBox.Text, out id);
+                
+                if(ListaPasada ==0)
+                {
+                    detalle = BLL.CotizacionesDetalleBLL.BuscarLista(id);
+                    ListaPasada = 1;
+                }
+                
+                Cotisar.CotizacionDetalle = BLL.CotizacionesDetalleBLL.AgregarArticulo(detalle, articuloid, cantidad, Convert.ToInt32(BLL.CotizacionesBLL.calcularMonto(Articulo.Precio, CantidadnumericUpDown.Value)), precio, Articulo.Descripcion);
+                detalle = Cotisar.CotizacionDetalle;
+
             }
 
             DetalledataGridView.DataSource = null;

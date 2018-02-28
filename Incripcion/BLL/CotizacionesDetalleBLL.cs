@@ -10,8 +10,28 @@ namespace Incripcion.BLL
 {
     public class CotizacionesDetalleBLL
     {
-      
-        
+        public static bool Guardar(CotizacionesDetalle cotizacion)
+        {
+            bool paso = false;
+            try
+            {
+                Contexto contex = new Contexto();
+                if (contex.detalle.Add(cotizacion) != null)
+                {
+                    contex.SaveChanges();
+                    paso = true;
+                }
+                
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return paso;
+        }
+
         public static bool Guardar(List<CotizacionesDetalle> cotizaciones)
         {
 
@@ -58,6 +78,43 @@ namespace Incripcion.BLL
             }
             return termino;
 
+        }
+
+        public static List<CotizacionesDetalle> AgregarArticulo(List<CotizacionesDetalle> detalle,int articuloID,int cantidad, int importe, decimal precio, string descripcion)
+        {
+            CotizacionesDetalle cotisacion = new CotizacionesDetalle();
+            
+            
+            foreach (var cotisar in detalle)
+            {
+         
+               
+                 if (cotisar.ArticuloID == articuloID)
+                 {
+                      cotisar.Cantidad += cantidad;
+                      cotisar.Importe += importe;
+                      break;
+                 }
+
+                if (detalle.Exists(x => x.ArticuloID == articuloID)==false)
+                {
+                    detalle.Add(new CotizacionesDetalle(cotisar.CotizacionesID, articuloID, cantidad, precio, descripcion, importe));
+                    foreach (var detalles in detalle)
+                    {
+                        if(detalles.ArticuloID ==articuloID)
+                        {
+                            cotisacion = detalles;
+                            break;
+                        }
+                    }
+
+                    Guardar(cotisacion);
+                    break;
+                }
+
+                
+            }
+            return detalle;   
         }
 
         public static List<CotizacionesDetalle> BuscarLista(int id)
