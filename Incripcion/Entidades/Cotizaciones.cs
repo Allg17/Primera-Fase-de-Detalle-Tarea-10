@@ -14,12 +14,11 @@ namespace Incripcion.Entidades
         public DateTime Fecha { get; set; }
         public string Comentario { get; set; }
         public decimal Monto { get; set; }
-        [NotMapped]
-        public List<CotizacionesDetalle> CotizacionDetalle { get; set; }
-
+        
+        public virtual List<CotizacionesDetalle> CotizacionDetalle { get; set; }
+        //virtual para que funcione solo, despues del public
         public Cotizaciones( DateTime fecha, string comentario, decimal monto, List<CotizacionesDetalle> Cotizaciondetalle)
         {
-            
             this.Fecha = fecha;
             this.Comentario = comentario;
             this.Monto = monto;
@@ -28,7 +27,6 @@ namespace Incripcion.Entidades
 
         public Cotizaciones()
         {
-           
             this.ID = 0;
             this.Fecha = DateTime.Now;
             this.Comentario = string.Empty;

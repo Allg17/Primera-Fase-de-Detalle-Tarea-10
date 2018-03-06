@@ -42,6 +42,8 @@
             this.PrecioerrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.DescripcionerrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.IDerrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.ArticulosCotizados = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrecioerrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescripcionerrorProvider)).BeginInit();
@@ -77,7 +79,7 @@
             // 
             // IDtextBox
             // 
-            this.IDtextBox.Location = new System.Drawing.Point(54, 19);
+            this.IDtextBox.Location = new System.Drawing.Point(81, 19);
             this.IDtextBox.Name = "IDtextBox";
             this.IDtextBox.Size = new System.Drawing.Size(100, 20);
             this.IDtextBox.TabIndex = 3;
@@ -92,7 +94,7 @@
             // 
             // numericUpDown
             // 
-            this.numericUpDown.Location = new System.Drawing.Point(54, 55);
+            this.numericUpDown.Location = new System.Drawing.Point(81, 55);
             this.numericUpDown.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -143,7 +145,7 @@
             // 
             // buscarbutton
             // 
-            this.buscarbutton.Location = new System.Drawing.Point(175, 19);
+            this.buscarbutton.Location = new System.Drawing.Point(256, 19);
             this.buscarbutton.Name = "buscarbutton";
             this.buscarbutton.Size = new System.Drawing.Size(75, 23);
             this.buscarbutton.TabIndex = 10;
@@ -163,11 +165,30 @@
             // 
             this.IDerrorProvider.ContainerControl = this;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 261);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Articulos Cotizados";
+            // 
+            // ArticulosCotizados
+            // 
+            this.ArticulosCotizados.Location = new System.Drawing.Point(114, 261);
+            this.ArticulosCotizados.Name = "ArticulosCotizados";
+            this.ArticulosCotizados.ReadOnly = true;
+            this.ArticulosCotizados.Size = new System.Drawing.Size(100, 20);
+            this.ArticulosCotizados.TabIndex = 12;
+            // 
             // fArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 377);
+            this.Controls.Add(this.ArticulosCotizados);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.buscarbutton);
             this.Controls.Add(this.Eliminarbutton);
             this.Controls.Add(this.Guardarbutton);
@@ -205,5 +226,7 @@
         private System.Windows.Forms.ErrorProvider PrecioerrorProvider;
         private System.Windows.Forms.ErrorProvider DescripcionerrorProvider;
         private System.Windows.Forms.ErrorProvider IDerrorProvider;
+        private System.Windows.Forms.TextBox ArticulosCotizados;
+        private System.Windows.Forms.Label label4;
     }
 }

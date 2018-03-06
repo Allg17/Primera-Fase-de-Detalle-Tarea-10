@@ -45,7 +45,8 @@ FechaActual date
  (
  ArticuloID int primary key identity(1,1),
  Descripcion varchar(max),
- Precio money
+ Precio money,
+ ArticulosCotizados int null
  
  );
 

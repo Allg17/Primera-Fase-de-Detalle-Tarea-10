@@ -68,6 +68,7 @@
             this.BuscarDetalllebutton = new System.Windows.Forms.Button();
             this.DetalleerrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.BuscarArticulobutton = new System.Windows.Forms.Button();
+            this.Consultabutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DetalledataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CantidadnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArticuloIDnumericUpDown)).BeginInit();
@@ -390,11 +391,22 @@
             this.BuscarArticulobutton.UseVisualStyleBackColor = true;
             this.BuscarArticulobutton.Click += new System.EventHandler(this.BuscarArticulobutton_Click);
             // 
+            // Consultabutton
+            // 
+            this.Consultabutton.Location = new System.Drawing.Point(433, 584);
+            this.Consultabutton.Name = "Consultabutton";
+            this.Consultabutton.Size = new System.Drawing.Size(116, 33);
+            this.Consultabutton.TabIndex = 40;
+            this.Consultabutton.Text = "Consulta";
+            this.Consultabutton.UseVisualStyleBackColor = true;
+            this.Consultabutton.Click += new System.EventHandler(this.Consultabutton_Click);
+            // 
             // fCotizaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(579, 629);
+            this.Controls.Add(this.Consultabutton);
             this.Controls.Add(this.BuscarArticulobutton);
             this.Controls.Add(this.BuscarDetalllebutton);
             this.Controls.Add(this.DetallenumericUpDown);
@@ -481,5 +493,6 @@
         private System.Windows.Forms.Button BuscarDetalllebutton;
         private System.Windows.Forms.ErrorProvider DetalleerrorProvider;
         private System.Windows.Forms.Button BuscarArticulobutton;
+        private System.Windows.Forms.Button Consultabutton;
     }
 }

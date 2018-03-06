@@ -46,6 +46,13 @@ namespace Incripcion.BLL
                    
                 }
 
+                foreach (var articulo in cotizaciones)
+                {
+                    var Articulos = BLL.ArticulosBLL.Buscar(articulo.ArticuloID);
+                    Articulos.ArticulosCotizados += articulo.Cantidad;
+                    BLL.ArticulosBLL.Modificar(Articulos);
+                }
+
                 if (contex.detalle.AddRange(cotizaciones) != null)
                 {
                     contex.SaveChanges();
@@ -70,6 +77,9 @@ namespace Incripcion.BLL
 
             foreach (var eliminar in borrar)
             {
+                var articuloCantidad = BLL.ArticulosBLL.Buscar(eliminar.ArticuloID);
+                articuloCantidad.ArticulosCotizados -= eliminar.Cantidad;
+                BLL.ArticulosBLL.Modificar(articuloCantidad);
                 if (Eliminar(eliminar.ID))
                 {
                     termino = true;
@@ -215,10 +225,13 @@ namespace Incripcion.BLL
         {
 
             CotizacionesDetalle cotisar = new CotizacionesDetalle();
+            
             foreach (var Detalle in Cotisaciones)
             {
-                if(Detalle.ID == id)
+                
+                if (Detalle.ID == id)
                 {
+                    
                     cotisar = Detalle;
                     break;
                 }
@@ -236,8 +249,15 @@ namespace Incripcion.BLL
             try
             {
                 Contexto contex = new Contexto();
-                
+                var articulo = BLL.ArticulosBLL.Buscar(Cotisaciones.ArticuloID);
+                var cotizacion = Buscar(Cotisaciones.ID);
+                articulo.ArticulosCotizados -= cotizacion.Cantidad;
+                BLL.ArticulosBLL.Modificar(articulo);
+
                 contex.Entry(Cotisaciones).State = System.Data.Entity.EntityState.Modified;
+
+                articulo.ArticulosCotizados += Cotisaciones.Cantidad;
+                BLL.ArticulosBLL.Modificar(articulo);
                 if (contex.SaveChanges() > 0)
                 {
                     paso = true;

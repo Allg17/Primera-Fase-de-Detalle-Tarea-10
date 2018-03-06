@@ -63,6 +63,12 @@
     <Compile Include="cCargos.Designer.cs">
       <DependentUpon>cCargos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ccotizaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ccotizaciones.Designer.cs">
+      <DependentUpon>Ccotizaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="cEstudiantes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     </Compile>
     <EmbeddedResource Include="cCargos.resx">
       <DependentUpon>cCargos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ccotizaciones.resx">
+      <DependentUpon>Ccotizaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cEstudiantes.resx">
       <DependentUpon>cEstudiantes.cs</DependentUpon>

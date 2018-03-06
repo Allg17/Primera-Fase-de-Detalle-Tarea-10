@@ -98,6 +98,7 @@ namespace Incripcion
             DescripcionrichTextBox.Clear();
             numericUpDown.Value = 0;
             IDtextBox.Clear();
+            ArticulosCotizados.Clear();
 
         }
 
@@ -136,6 +137,7 @@ namespace Incripcion
                 var articulo = BLL.ArticulosBLL.Buscar(id);
                 DescripcionrichTextBox.Text = articulo.Descripcion;
                 numericUpDown.Value = articulo.Precio;
+                ArticulosCotizados.Text = articulo.ArticulosCotizados.ToString();
             }
         }
     }

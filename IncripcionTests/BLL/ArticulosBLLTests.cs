@@ -16,7 +16,7 @@ namespace Incripcion.BLL.Tests
         {
             Articulos art = new Articulos();
 
-            art.ArticuloID = 1;
+            art.ArticuloID = 2;
             art.Descripcion = "Mentas";
             art.Precio = 100;
             bool paso;
@@ -29,19 +29,24 @@ namespace Incripcion.BLL.Tests
         [TestMethod()]
         public void EliminarTest()
         {
-            Assert.Fail();
+            bool paso;
+           paso = BLL.ArticulosBLL.Eliminar(2);
+            Assert.AreEqual(paso, true);
         }
 
         [TestMethod()]
         public void ModificarTest()
         {
             Assert.Fail();
+            
         }
 
         [TestMethod()]
         public void BuscarTest()
         {
-            Assert.Fail();
+            Articulos articulo = new Articulos();
+            articulo = BLL.ArticulosBLL.Buscar(1);
+            Assert.IsNotNull(articulo);
         }
 
         [TestMethod()]

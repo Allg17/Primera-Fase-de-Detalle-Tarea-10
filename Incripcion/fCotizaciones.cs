@@ -377,5 +377,11 @@ namespace Incripcion
                 MessageBox.Show("No encontrado");
             }
         }
+
+        private void Consultabutton_Click(object sender, EventArgs e)
+        {
+            Ccotizaciones abrir = new Ccotizaciones();
+            abrir.Show();
+        }
     }
 }
